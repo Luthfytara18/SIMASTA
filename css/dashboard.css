@@ -1,0 +1,224 @@
+/* ===================================
+   FONT & DASAR
+==================================== */
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #f3f4f6;
+}
+
+/* ===================================
+   SIDEBAR
+==================================== */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  position: fixed;
+}
+
+.sidebar-logo {
+  margin-bottom: 24px;
+  padding-left: 8px;
+}
+
+.sidebar-logo-img {
+  max-width: 160px;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+
+.menu-item i {
+  font-size: 18px;
+}
+
+.menu-item:hover {
+  background-color: #f3f4f6;
+}
+
+.menu-item.active {
+  background-color: #dcfce7;
+  color: #14543b;
+}
+
+.logout-item {
+  color: #dc2626;
+}
+
+/* ===================================
+   MAIN CONTENT
+==================================== */
+.main-content {
+  margin-left: 250px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ===================================
+   TOPBAR
+==================================== */
+.topbar {
+  background-color: #ffffff;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 16px;
+  width: 320px;
+}
+
+.search-box i {
+  color: #9ca3af;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* ===================================
+   STAT CARDS
+==================================== */
+.stats-row {
+  display: flex;
+  gap: 20px;
+  padding: 24px 32px 0;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  flex: 1;
+}
+
+.stat-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* ===================================
+   TABEL KEGIATAN TERBARU
+==================================== */
+.table-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  margin: 24px 32px;
+  padding: 24px;
+}
+
+.table-title {
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 16px;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table thead {
+  background-color: #f9fafb;
+}
+
+.custom-table th {
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.custom-table td {
+  padding: 16px;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.custom-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.badge-status {
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.badge-berlangsung {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.badge-selesai {
+  background-color: #ede9fe;
+  color: #7c3aed;
+}
+
+.badge-terjadwal {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+/* ===================================
+   RESPONSIVE
+==================================== */
+@media (max-width: 991.98px) {
+  .stats-row {
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
