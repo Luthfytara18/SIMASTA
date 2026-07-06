@@ -1,0 +1,399 @@
+/* ===================================
+   PAGE TOOLBAR (search + filter + tombol tambah)
+==================================== */
+.page-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 32px 0;
+  flex-wrap: wrap;
+}
+
+.page-toolbar .search-box {
+  border: 1px solid #d1d5db;
+  width: 280px;
+}
+
+.filter-select {
+  background-color: #4b5563;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-add {
+  background-color: #14543b;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  background-color: #0e3d2b;
+  color: #ffffff;
+}
+
+/* ===================================
+   ACTION BUTTONS DI TABEL (edit / hapus)
+==================================== */
+.action-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-edit {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.btn-edit:hover {
+  background-color: #bbf7d0;
+}
+
+.btn-delete {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.btn-delete:hover {
+  background-color: #fecaca;
+}
+
+.btn-view {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.btn-view:hover {
+  background-color: #bfdbfe;
+}
+
+/* ===================================
+   MODAL CUSTOM (tambah/edit/hapus)
+==================================== */
+.custom-modal {
+  border-radius: 16px;
+  border: none;
+  padding: 8px;
+}
+
+.modal-title-custom {
+  font-weight: 700;
+  font-size: 18px;
+  color: #14213d;
+  margin: 0;
+}
+
+.form-label-custom {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-control-custom {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #111827;
+}
+
+.form-control-custom:focus {
+  outline: none;
+  border-color: #14543b;
+  box-shadow: 0 0 0 3px rgba(20, 84, 59, 0.1);
+}
+
+textarea.form-control-custom {
+  resize: none;
+}
+
+.btn-cancel {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  background-color: #e5e7eb;
+}
+
+.btn-save {
+  background-color: #14543b;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  background-color: #0e3d2b;
+  color: #ffffff;
+}
+
+.btn-delete-confirm {
+  background-color: #dc2626;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.btn-delete-confirm:hover {
+  background-color: #b91c1c;
+  color: #ffffff;
+}
+
+.hapus-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #fee2e2;
+  color: #dc2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 16px;
+}
+
+.text-muted-custom {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ===================================
+   AVATAR INISIAL (untuk halaman peserta)
+==================================== */
+.avatar-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #dcfce7;
+  color: #14543b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.peserta-name-cell {
+  display: flex;
+  align-items: center;
+}
+
+/* ===================================
+   BADGE JENIS PESERTA
+==================================== */
+.badge-jenis {
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.badge-mahasiswa {
+  background-color: #ede9fe;
+  color: #7c3aed;
+}
+
+.badge-dosen {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.badge-umum {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+/* ===================================
+   GRID DOKUMENTASI (card foto/file)
+==================================== */
+.dokumentasi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0 32px 32px;
+}
+
+.doc-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+}
+
+.doc-thumb {
+  height: 110px;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-size: 32px;
+  color: #9ca3af;
+  overflow: hidden;
+}
+
+.doc-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doc-filename {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-actions {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.doc-thumb i {
+  color: #9ca3af;
+}
+
+.doc-thumb-pdf i {
+  color: #ef4444;
+}
+
+.doc-meta {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+.btn-icon-plain {
+    background: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    color: #374151;
+    font-size: 14px;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon-plain:hover {
+    background-color: #f3f4f6;
+    border-color: #14543b;
+    color: #14543b;
+}
+
+.btn-icon-plain.text-danger {
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.btn-icon-plain.text-danger:hover {
+    background-color: #fee2e2;
+    border-color: #dc2626;
+    color: #b91c1c;
+}
+
+/* ===================================
+   UPLOAD AREA (modal dokumentasi)
+==================================== */
+.upload-area {
+  border: 2px dashed #d1d5db;
+  border-radius: 10px;
+  padding: 28px;
+  text-align: center;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.upload-area:hover {
+  border-color: #14543b;
+}
+
+.upload-area i {
+  font-size: 28px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ===================================
+   PAGE HEADER UNTUK KEGIATAN PESERTA
+==================================== */
+.peserta-count-pill {
+  background-color: #dcfce7;
+  color: #14543b;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+/* ===================================
+   RESPONSIVE
+==================================== */
+@media (max-width: 1199.98px) {
+  .dokumentasi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .dokumentasi-grid {
+    grid-template-columns: 1fr;
+  }
+}

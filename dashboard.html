@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - SIMASTA</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <div class="d-flex">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-logo">
+          <img
+            src="assets/logo-sidebar.png"
+            alt="Logo Simasta"
+            class="sidebar-logo-img"
+          />
+        </div>
+
+        <nav class="sidebar-menu">
+          <a href="dashboard.html" class="menu-item active">
+            <i class="bi bi-grid-fill"></i> Dashboard
+          </a>
+          <a href="kegiatan.html" class="menu-item">
+            <i class="bi bi-calendar-event"></i> Kegiatan
+          </a>
+          <a href="peserta.html" class="menu-item">
+            <i class="bi bi-people"></i> Peserta
+          </a>
+          <a href="kegiatan-peserta.html" class="menu-item">
+            <i class="bi bi-person-check"></i> Kegiatan Peserta
+          </a>
+          <a href="dokumentasi.html" class="menu-item">
+            <i class="bi bi-image"></i> Dokumentasi
+          </a>
+        </nav>
+
+        <a href="index.html" class="menu-item logout-item">
+          <i class="bi bi-box-arrow-left"></i> Keluar
+        </a>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- TOPBAR -->
+          <div class="topbar"></div>
+
+        <!-- STAT CARDS -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label">
+              <i class="bi bi-calendar-event" style="color: #ef4444"></i> Total
+              Kegiatan
+            </div>
+            <div id="totalKegiatan" class="stat-value" style="color: #ef4444">12</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">
+              <i class="bi bi-people-fill" style="color: #8b5cf6"></i> Total
+              Peserta
+            </div>
+            <div class="stat-value" style="color: #8b5cf6">87</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">
+              <i class="bi bi-activity" style="color: #22c55e"></i> Berlangsung
+            </div>
+            <div id="totalBerlangsung" class="stat-value" style="color: #22c55e">3</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">
+              <i class="bi bi-image" style="color: #3b82f6"></i> Dokumentasi
+            </div>
+            <div id="totalDokumentasi" class="stat-value" style="color: #3b82f6">12</div>
+          </div>
+        </div>
+
+        <!-- TABEL KEGIATAN TERBARU -->
+        <div class="table-card">
+          <h5 class="table-title">Kegiatan terbaru</h5>
+
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Nama Kegiatan</th>
+                <th>Tanggal</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="kegiatanTerbaru">
+              <tr>
+                <td>Bakti sosial desa Sukamaju</td>
+                <td>10 Juni 2026</td>
+                <td>
+                  <span class="badge-status badge-berlangsung"
+                    >Berlangsung</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Penyuluhan kesehatan masyarakat</td>
+                <td>2 Juni 2026</td>
+                <td><span class="badge-status badge-selesai">Selesai</span></td>
+              </tr>
+              <tr>
+                <td>Pelatihan UMKM digital</td>
+                <td>25 Juni 2026</td>
+                <td>
+                  <span class="badge-status badge-terjadwal">Terjadwal</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
