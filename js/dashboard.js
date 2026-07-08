@@ -19,16 +19,16 @@ async function loadStatistik() {
     const data = await response.json();
 
     document.getElementById("totalKegiatan").textContent =
-      data.totalKegiatan;
+  data.totalKegiatan ?? 0;
 
-    document.getElementById("totalPeserta").textContent =
-      data.totalPeserta;
+document.getElementById("totalPeserta").textContent =
+  data.totalPeserta ?? 0;
 
-    document.getElementById("totalBerlangsung").textContent =
-      data.totalBerlangsung;
+document.getElementById("totalBerlangsung").textContent =
+  data.totalBerlangsung ?? 0;
 
-    document.getElementById("totalDokumentasi").textContent =
-      data.totalDokumentasi;
+document.getElementById("totalDokumentasi").textContent =
+  data.totalDokumentasi ?? 0;
   } catch (error) {
     console.error("Gagal memuat statistik:", error);
   }
@@ -57,7 +57,7 @@ async function loadKegiatanTerbaru() {
     kegiatan.forEach((item) => {
       let badgeClass = "";
 
-      switch (item.status.toLowerCase()) {
+      switch ((item.status || "").toLowerCase()) {
         case "berlangsung":
           badgeClass = "badge-berlangsung";
           break;

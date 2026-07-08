@@ -57,13 +57,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }),
       });
 
-      const result = await response.json();
+if (!response.ok) {
+  throw new Error("HTTP Error");
+}
 
-      if (result.success) {
-        window.location.href = "dashboard.html";
-      } else {
-        loginError.classList.remove("d-none");
-      }
+const result = await response.json();
+
+if (result.success) {
+  window.location.replace("dashboard.html");
+} else {
+  loginError.classList.remove("d-none");
+}
+
     } catch (error) {
       console.error("Login Error:", error);
       loginError.classList.remove("d-none");

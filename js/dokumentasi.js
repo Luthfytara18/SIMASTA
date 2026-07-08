@@ -100,10 +100,13 @@ function initResetForm() {
 
     form.reset();
 
-    const label = document.querySelector('label[for="fileUpload"]');
+const label = document.querySelector('label[for="fileUpload"]');
 
-    label.innerHTML =
-      `<i class="bi bi-cloud-arrow-up"></i> Klik untuk pilih file (foto / PDF)`;
+label.innerHTML =
+`<i class="bi bi-cloud-arrow-up"></i> Klik untuk pilih file (foto / PDF)`;
+
+document.getElementById("previewImage").src = "";
+document.getElementById("previewPdf").src = "";
 
   });
 }
@@ -168,8 +171,6 @@ function initFilterDokumentasi() {
 // PREVIEW DOKUMENTASI
 // =========================
 function initPreviewDokumentasi() {
-
-  const previewButtons = document.querySelectorAll(".btn-icon-plain");
 
   const modal = new bootstrap.Modal(
     document.getElementById("modalPreviewDokumentasi")

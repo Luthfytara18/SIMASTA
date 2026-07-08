@@ -19,9 +19,9 @@ function initSearchPeserta() {
     );
 
     rows.forEach((row) => {
-      const nama = row.children[1].textContent.toLowerCase();
-      const nimNip = row.children[2].textContent.toLowerCase();
-      const email = row.children[4].textContent.toLowerCase();
+      const nama = row.children[1]?.textContent.toLowerCase() || "";
+const nimNip = row.children[2]?.textContent.toLowerCase() || "";
+const email = row.children[4]?.textContent.toLowerCase() || "";
 
       const cocok =
         nama.includes(keyword) ||

@@ -21,7 +21,7 @@ function initSearch() {
     );
 
     rows.forEach((row) => {
-      const nama = row.children[1].textContent.toLowerCase();
+      const nama = row.children[1]?.textContent.toLowerCase() || "";
 
       row.style.display =
         nama.includes(keyword) ? "" : "none";
@@ -46,7 +46,7 @@ function initFilter() {
 
     rows.forEach((row) => {
       const status =
-        row.children[5].textContent.trim().toLowerCase();
+row.children[5]?.textContent.trim().toLowerCase() || "";
 
       if (
         statusDipilih === "semua status" ||
@@ -93,6 +93,7 @@ function initTambahKegiatan() {
       }
     } catch (error) {
       console.error(error);
+alert("Terjadi kesalahan saat menyimpan data.");
     }
   });
 }
@@ -128,6 +129,7 @@ function initEditKegiatan() {
         }
       } catch (error) {
         console.error(error);
+alert("Terjadi kesalahan saat memperbarui data.");
       }
     });
   });

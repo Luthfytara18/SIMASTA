@@ -20,9 +20,9 @@ function initSearch() {
     );
 
     rows.forEach((row) => {
-      const nama = row.children[1].textContent.toLowerCase();
-      const kegiatan = row.children[2].textContent.toLowerCase();
-      const keterangan = row.children[3].textContent.toLowerCase();
+      const nama = row.children[1]?.textContent.toLowerCase() || "";
+const kegiatan = row.children[2]?.textContent.toLowerCase() || "";
+const keterangan = row.children[3]?.textContent.toLowerCase() || "";
 
       const cocok =
         nama.includes(keyword) ||
@@ -50,7 +50,7 @@ function initFilter() {
     );
 
     rows.forEach((row) => {
-      const kegiatan = row.children[2].textContent.toLowerCase();
+      const kegiatan = row.children[2]?.textContent.toLowerCase() || "";
 
       if (
         value === "semua kegiatan" ||
