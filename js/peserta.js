@@ -53,6 +53,10 @@ function initValidasiForm() {
         'input[name="email"]'
       );
 
+      const noTelp = form.querySelector(
+  'input[name="no_telp"]'
+);
+
       if (!nama || !nimNip || !email) return;
 
       if (
@@ -72,6 +76,18 @@ function initValidasiForm() {
         e.preventDefault();
         alert("Format email tidak valid.");
         return;
+      }
+
+      if (noTelp && noTelp.value.trim() !== "") {
+        const phonePattern = /^[0-9]{10,15}$/;
+
+        if (!phonePattern.test(noTelp.value)) {
+          e.preventDefault();
+          alert(
+            "Nomor telepon hanya boleh berisi angka (10-15 digit)."
+          );
+          return;
+        }
       }
 
       if (nimNip.value.length < 5) {
