@@ -15,7 +15,7 @@ SIMASTA (Sistem Monitoring Kegiatan Pengabdian Masyarakat) adalah aplikasi manaj
 - Melihat dashboard statistik
 
 ## ✨ Fitur Utama
-_________________________________________________________________________________________________________________
+
 | Fitur                 | Deskripsi                                                                             |
 |-----------------------|---------------------------------------------------------------------------------------|
 | **Dashboard**         | Menampilkan statistik total kegiatan, peserta, kegiatan berlangsung, dan dokumentasi  |
@@ -23,10 +23,9 @@ ________________________________________________________________________________
 | **Peserta**           | Tambah, edit, hapus, dan cari peserta (mahasiswa/dosen/umum)                          |
 | **Kegiatan Peserta**  | Mendaftarkan peserta ke kegiatan dan mengelola keterangan peran                       |
 | **Dokumentasi**       | Upload, preview, download, dan hapus file dokumentasi (JPG/PNG/PDF)                   |
-|_______________________|_______________________________________________________________________________________|
 
 ## 🛠️ Teknologi yang Digunakan
-_____________________________________________
+
 | Komponen      | Teknologi                 |
 |---------------|---------------------------|
 | Backend       | PHP 8.2 (Native)          |
@@ -36,7 +35,6 @@ _____________________________________________
 | Icons         | Bootstrap Icons           |
 | Font          | Google Fonts (Poppins)    |
 | Server        | XAMPP / Apache            |
-|_______________|___________________________|
 
 ## 📁 Struktur Proyek
 
@@ -77,17 +75,16 @@ Pada Windows/XAMPP, folder sudah memiliki izin tulis secara default
 "http://localhost/simasta/index.html"
 
 ## 🔐 Login Default
-_____________________________
 |Field      |   Nilai       |
 |-----------|---------------|
 |Username   |   admin       |
 |Password   |   admin123    |
-|___________|_______________|
+
 Catatan: Password telah di-hash menggunakan password_hash() dengan Bcrypt.
 
 ## 🗄️ Struktur Database
 Tabel-tabel utama:
-_____________________________________________________________________
+
 |Tabel               |Deskripsi                                     |
 |--------------------|----------------------------------------------|
 |users               |Data pengguna (login)                         |
@@ -95,7 +92,7 @@ _____________________________________________________________________
 |peserta             |Data peserta (mahasiswa/dosen/umum)           |
 |kegiatan_peserta    |Relasi banyak-ke-banyak kegiatan ↔ peserta    |
 |dokumentasi         |File dokumentasi kegiatan                     |
-|____________________|______________________________________________|
+
 Relasi:
 kegiatan (1) ──┬── (∞) kegiatan_peserta ──┬── (1) peserta
                └── (∞) dokumentasi
@@ -144,14 +141,13 @@ Dashboard (dashboard.html)
 
 ## 👥 Pengembang
 Kelompok 13 – Fakultas Teknik, Program Studi Informatika, Universitas Sarjanawiyata Tamansiswa
-_________________________________________________________________________________________________
+
 |Nama                     |     NIM     |                       Peran                           |
 |-------------------------|-------------|-------------------------------------------------------|
 |Yohanes Mario Fernandez  |  2024018003 | Front-End (HTML5, CSS, Bootstrap) & Penyusunan Laporan|
 |Luthfy Tara Nurwidagdo   |  2024018020 | JavaScript, GitHub Management & Integrasi Sistem      |
 |Atthaya Nanda            |  2022018010 | Database Design (MySQL) & Pengujian Database          |
 |Helena Trivena           |  2022018024 | Back-End (PHP Native) & Implementasi CRUD             |
-|_________________________|_____________|_______________________________________________________|
 
 ## 📜 Lisensi
 Hak Cipta Dilindungi Undang-Undang.
