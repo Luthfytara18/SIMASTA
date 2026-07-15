@@ -1,90 +1,84 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("✅ index.js loaded!");
+
   const loginForm = document.getElementById("loginForm");
   const usernameInput = document.getElementById("username");
   const passwordInput = document.getElementById("password");
   const togglePassword = document.getElementById("togglePassword");
   const loginError = document.getElementById("loginError");
 
-  if (!loginForm) return;
+  if (!loginForm) {
+    console.error("❌ Form login tidak ditemukan!");
+    return;
+  }
 
-  // =========================
-  // TOGGLE PASSWORD
-  // =========================
-  togglePassword.addEventListener("click", () => {
-    const isPassword = passwordInput.type === "password";
+  console.log("✅ Form login ditemukan");
 
-    passwordInput.type = isPassword ? "text" : "password";
+  // Toggle Password
+  if (togglePassword) {
+    togglePassword.addEventListener("click", function () {
+      const isPassword = passwordInput.type === "password";
+      passwordInput.type = isPassword ? "text" : "password";
+      this.classList.toggle("bi-eye");
+      this.classList.toggle("bi-eye-slash");
+    });
+  }
 
-    togglePassword.classList.toggle("bi-eye");
-    togglePassword.classList.toggle("bi-eye-slash");
-  });
-
-  // =========================
-  // LOGIN
-  // =========================
-  loginForm.addEventListener("submit", async (e) => {
+  // Login
+  loginForm.addEventListener("submit", async function (e) {
     e.preventDefault();
+    console.log("🔵 Tombol login diklik!");
 
     loginError.classList.add("d-none");
 
-    let isValid = true;
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
 
-    if (usernameInput.value.trim() === "") {
-      usernameInput.classList.add("is-invalid");
-      isValid = false;
-    } else {
-      usernameInput.classList.remove("is-invalid");
+    console.log("Username:", username);
+    console.log("Password:", password);
+
+    if (username === "" || password === "") {
+      loginError.textContent = "Username dan password wajib diisi.";
+      loginError.classList.remove("d-none");
+      return;
     }
-
-    if (passwordInput.value.trim() === "") {
-      passwordInput.classList.add("is-invalid");
-      isValid = false;
-    } else {
-      passwordInput.classList.remove("is-invalid");
-    }
-
-    if (!isValid) return;
 
     try {
+      console.log("🟡 Mengirim request ke login.php...");
       const response = await fetch("php/login.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          username: usernameInput.value.trim(),
-          password: passwordInput.value.trim(),
-        }),
+        body: JSON.stringify({ username, password }),
       });
 
-if (!response.ok) {
-  throw new Error("HTTP Error");
-}
+      const result = await response.json();
+      console.log("🟢 Response dari server:", result);
 
-const result = await response.json();
-
-if (result.success) {
-  window.location.replace("dashboard.html");
-} else {
-  loginError.classList.remove("d-none");
-}
-
+      if (result.success) {
+        console.log("✅ Login berhasil, redirect ke dashboard...");
+        window.location.replace("dashboard.html");
+      } else {
+        loginError.textContent =
+          result.message || "Username atau password salah.";
+        loginError.classList.remove("d-none");
+      }
     } catch (error) {
-      console.error("Login Error:", error);
+      console.error("🔴 Error:", error);
+      loginError.textContent = "Terjadi kesalahan. Coba lagi.";
       loginError.classList.remove("d-none");
     }
   });
 
-  // =========================
-  // HAPUS ERROR SAAT MENGETIK
-  // =========================
-  usernameInput.addEventListener("input", () => {
-    usernameInput.classList.remove("is-invalid");
+  // Hapus error saat mengetik
+  usernameInput.addEventListener("input", function () {
+    this.classList.remove("is-invalid");
     loginError.classList.add("d-none");
   });
 
-  passwordInput.addEventListener("input", () => {
-    passwordInput.classList.remove("is-invalid");
+  passwordInput.addEventListener("input", function () {
+    this.classList.remove("is-invalid");
     loginError.classList.add("d-none");
   });
 });

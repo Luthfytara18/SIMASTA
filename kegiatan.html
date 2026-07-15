@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/toast.css" />
   </head>
   <body>
     <div class="d-flex">
@@ -66,7 +67,11 @@
         <div class="page-toolbar">
           <div class="search-box">
             <i class="bi bi-search"></i>
-            <input type="text" id="searchKegiatan" placeholder="Cari nama kegiatan......" />
+            <input
+              type="text"
+              id="searchKegiatan"
+              placeholder="Cari nama kegiatan......"
+            />
           </div>
 
           <select class="filter-select" id="filterStatus">
@@ -101,94 +106,14 @@
               </tr>
             </thead>
             <tbody id="kegiatanTableBody">
-              <tr>
-                <td>1</td>
-                <td>Bakti sosial desa Sukamaju</td>
-                <td>10 Juni 2026</td>
-                <td>Sleman</td>
-                <td>
-                  <div class="action-btns">
-                    <button
-                      class="btn-icon btn-edit"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEditKegiatan1"
-                    >
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button
-                      class="btn-icon btn-delete"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalHapusKegiatan1"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </td>
-                <td>
-                  <span class="badge-status badge-berlangsung"
-                    >Berlangsung</span
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Penyuluhan kesehatan masyarakat</td>
-                <td>2 Juni 2026</td>
-                <td>Bantul</td>
-                <td>
-                  <div class="action-btns">
-                    <button
-                      class="btn-icon btn-edit"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEditKegiatan2"
-                    >
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button
-                      class="btn-icon btn-delete"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalHapusKegiatan2"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </td>
-                <td><span class="badge-status badge-selesai">Selesai</span></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Pelatihan UMKM digital</td>
-                <td>25 Juni 2026</td>
-                <td>Yogyakarta</td>
-                <td>
-                  <div class="action-btns">
-                    <button
-                      class="btn-icon btn-edit"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEditKegiatan3"
-                    >
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button
-                      class="btn-icon btn-delete"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalHapusKegiatan3"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </td>
-                <td>
-                  <span class="badge-status badge-terjadwal">Terjadwal</span>
-                </td>
-              </tr>
+              <!-- Akan diisi oleh JavaScript -->
             </tbody>
           </table>
         </div>
       </main>
     </div>
 
-    <!-- ================= MODAL TAMBAH KEGIATAN ================= -->
+    <!-- MODAL TAMBAH KEGIATAN -->
     <div class="modal fade" id="modalTambahKegiatan" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal">
@@ -277,8 +202,8 @@
       </div>
     </div>
 
-    <!-- ================= MODAL EDIT KEGIATAN 1 ================= -->
-    <div class="modal fade" id="modalEditKegiatan1" tabindex="-1">
+    <!-- MODAL EDIT KEGIATAN UNIVERSAL -->
+    <div class="modal fade" id="modalEditKegiatan" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal">
           <div class="modal-body">
@@ -290,23 +215,26 @@
                 data-bs-dismiss="modal"
               ></button>
             </div>
-            <form action="proses_edit_kegiatan.php" method="POST">
-              <input type="hidden" name="id_kegiatan" value="1" />
+            <form action="php/kegiatan/proses_edit_kegiatan.php" method="POST">
+              <input type="hidden" name="id_kegiatan" id="editKegiatanId" />
               <div class="mb-3">
                 <label class="form-label-custom">Nama kegiatan</label>
                 <input
                   type="text"
                   name="nama_kegiatan"
+                  id="editKegiatanNama"
                   class="form-control-custom"
-                  value="Bakti sosial desa Sukamaju"
                   required
                 />
               </div>
               <div class="mb-3">
                 <label class="form-label-custom">Deskripsi</label>
-                <textarea name="deskripsi" class="form-control-custom" rows="3">
-Kegiatan bakti sosial membantu warga desa Sukamaju.</textarea
-                >
+                <textarea
+                  name="deskripsi"
+                  id="editKegiatanDeskripsi"
+                  class="form-control-custom"
+                  rows="3"
+                ></textarea>
               </div>
               <div class="row g-3 mb-3">
                 <div class="col-6">
@@ -314,8 +242,8 @@ Kegiatan bakti sosial membantu warga desa Sukamaju.</textarea
                   <input
                     type="date"
                     name="tanggal_mulai"
+                    id="editKegiatanMulai"
                     class="form-control-custom"
-                    value="2026-06-10"
                     required
                   />
                 </div>
@@ -324,8 +252,8 @@ Kegiatan bakti sosial membantu warga desa Sukamaju.</textarea
                   <input
                     type="date"
                     name="tanggal_selesai"
+                    id="editKegiatanSelesai"
                     class="form-control-custom"
-                    value="2026-06-12"
                     required
                   />
                 </div>
@@ -335,193 +263,19 @@ Kegiatan bakti sosial membantu warga desa Sukamaju.</textarea
                 <input
                   type="text"
                   name="lokasi"
+                  id="editKegiatanLokasi"
                   class="form-control-custom"
-                  value="Sleman"
                   required
                 />
               </div>
               <div class="mb-4">
                 <label class="form-label-custom">Status</label>
-                <select name="status" class="form-control-custom">
+                <select
+                  name="status"
+                  id="editKegiatanStatus"
+                  class="form-control-custom"
+                >
                   <option value="terjadwal">Terjadwal</option>
-                  <option value="berlangsung" selected>Berlangsung</option>
-                  <option value="selesai">Selesai</option>
-                </select>
-              </div>
-              <div class="d-flex justify-content-end gap-2">
-                <button
-                  type="button"
-                  class="btn-cancel"
-                  data-bs-dismiss="modal"
-                >
-                  Batal
-                </button>
-                <button type="submit" class="btn-save">
-                  <i class="bi bi-save"></i> Simpan
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= MODAL EDIT KEGIATAN 2 ================= -->
-    <div class="modal fade" id="modalEditKegiatan2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal">
-          <div class="modal-body">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <h5 class="modal-title-custom">Edit kegiatan</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <form action="proses_edit_kegiatan.php" method="POST">
-              <input type="hidden" name="id_kegiatan" value="2" />
-              <div class="mb-3">
-                <label class="form-label-custom">Nama kegiatan</label>
-                <input
-                  type="text"
-                  name="nama_kegiatan"
-                  class="form-control-custom"
-                  value="Penyuluhan kesehatan masyarakat"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label-custom">Deskripsi</label>
-                <textarea name="deskripsi" class="form-control-custom" rows="3">
-Penyuluhan kesehatan dasar untuk warga.</textarea
-                >
-              </div>
-              <div class="row g-3 mb-3">
-                <div class="col-6">
-                  <label class="form-label-custom">Tanggal mulai</label>
-                  <input
-                    type="date"
-                    name="tanggal_mulai"
-                    class="form-control-custom"
-                    value="2026-06-02"
-                    required
-                  />
-                </div>
-                <div class="col-6">
-                  <label class="form-label-custom">Tanggal selesai</label>
-                  <input
-                    type="date"
-                    name="tanggal_selesai"
-                    class="form-control-custom"
-                    value="2026-06-02"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label-custom">Lokasi</label>
-                <input
-                  type="text"
-                  name="lokasi"
-                  class="form-control-custom"
-                  value="Bantul"
-                  required
-                />
-              </div>
-              <div class="mb-4">
-                <label class="form-label-custom">Status</label>
-                <select name="status" class="form-control-custom">
-                  <option value="terjadwal">Terjadwal</option>
-                  <option value="berlangsung">Berlangsung</option>
-                  <option value="selesai" selected>Selesai</option>
-                </select>
-              </div>
-              <div class="d-flex justify-content-end gap-2">
-                <button
-                  type="button"
-                  class="btn-cancel"
-                  data-bs-dismiss="modal"
-                >
-                  Batal
-                </button>
-                <button type="submit" class="btn-save">
-                  <i class="bi bi-save"></i> Simpan
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= MODAL EDIT KEGIATAN 3 ================= -->
-    <div class="modal fade" id="modalEditKegiatan3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal">
-          <div class="modal-body">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <h5 class="modal-title-custom">Edit kegiatan</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <form action="proses_edit_kegiatan.php" method="POST">
-              <input type="hidden" name="id_kegiatan" value="3" />
-              <div class="mb-3">
-                <label class="form-label-custom">Nama kegiatan</label>
-                <input
-                  type="text"
-                  name="nama_kegiatan"
-                  class="form-control-custom"
-                  value="Pelatihan UMKM digital"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label-custom">Deskripsi</label>
-                <textarea name="deskripsi" class="form-control-custom" rows="3">
-Pelatihan pemasaran digital untuk pelaku UMKM.</textarea
-                >
-              </div>
-              <div class="row g-3 mb-3">
-                <div class="col-6">
-                  <label class="form-label-custom">Tanggal mulai</label>
-                  <input
-                    type="date"
-                    name="tanggal_mulai"
-                    class="form-control-custom"
-                    value="2026-06-25"
-                    required
-                  />
-                </div>
-                <div class="col-6">
-                  <label class="form-label-custom">Tanggal selesai</label>
-                  <input
-                    type="date"
-                    name="tanggal_selesai"
-                    class="form-control-custom"
-                    value="2026-06-26"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label-custom">Lokasi</label>
-                <input
-                  type="text"
-                  name="lokasi"
-                  class="form-control-custom"
-                  value="Yogyakarta"
-                  required
-                />
-              </div>
-              <div class="mb-4">
-                <label class="form-label-custom">Status</label>
-                <select name="status" class="form-control-custom">
-                  <option value="terjadwal" selected>Terjadwal</option>
                   <option value="berlangsung">Berlangsung</option>
                   <option value="selesai">Selesai</option>
                 </select>
@@ -544,71 +298,21 @@ Pelatihan pemasaran digital untuk pelaku UMKM.</textarea
       </div>
     </div>
 
-    <!-- ================= MODAL HAPUS KEGIATAN 1,2,3 ================= -->
-    <div class="modal fade" id="modalHapusKegiatan1" tabindex="-1">
+    <!-- MODAL HAPUS KEGIATAN UNIVERSAL -->
+    <div class="modal fade" id="modalHapusKegiatan" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal text-center">
           <div class="modal-body py-4">
             <div class="hapus-icon-circle"><i class="bi bi-trash"></i></div>
             <h5 class="modal-title-custom mb-2">Hapus kegiatan?</h5>
-            <p class="text-muted-custom mb-4">
-              "Bakti sosial desa Sukamaju" akan dihapus permanen.
+            <p class="text-muted-custom mb-4" id="hapusKegiatanText">
+              "Nama kegiatan" akan dihapus permanen.
             </p>
             <div class="d-flex justify-content-center gap-2">
               <button type="button" class="btn-cancel" data-bs-dismiss="modal">
                 Batal
               </button>
-              <a
-                href="proses_hapus_kegiatan.php?id=1"
-                class="btn-delete-confirm"
-                ><i class="bi bi-trash"></i> Ya, hapus</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalHapusKegiatan2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal text-center">
-          <div class="modal-body py-4">
-            <div class="hapus-icon-circle"><i class="bi bi-trash"></i></div>
-            <h5 class="modal-title-custom mb-2">Hapus kegiatan?</h5>
-            <p class="text-muted-custom mb-4">
-              "Penyuluhan kesehatan masyarakat" akan dihapus permanen.
-            </p>
-            <div class="d-flex justify-content-center gap-2">
-              <button type="button" class="btn-cancel" data-bs-dismiss="modal">
-                Batal
-              </button>
-              <a
-                href="proses_hapus_kegiatan.php?id=2"
-                class="btn-delete-confirm"
-                ><i class="bi bi-trash"></i> Ya, hapus</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalHapusKegiatan3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal text-center">
-          <div class="modal-body py-4">
-            <div class="hapus-icon-circle"><i class="bi bi-trash"></i></div>
-            <h5 class="modal-title-custom mb-2">Hapus kegiatan?</h5>
-            <p class="text-muted-custom mb-4">
-              "Pelatihan UMKM digital" akan dihapus permanen.
-            </p>
-            <div class="d-flex justify-content-center gap-2">
-              <button type="button" class="btn-cancel" data-bs-dismiss="modal">
-                Batal
-              </button>
-              <a
-                href="proses_hapus_kegiatan.php?id=3"
-                class="btn-delete-confirm"
+              <a href="#" id="hapusKegiatanLink" class="btn-delete-confirm"
                 ><i class="bi bi-trash"></i> Ya, hapus</a
               >
             </div>
@@ -618,6 +322,7 @@ Pelatihan pemasaran digital untuk pelaku UMKM.</textarea
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/toast.js"></script>
     <script src="js/kegiatan.js"></script>
   </body>
 </html>

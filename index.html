@@ -58,7 +58,7 @@
             <div class="form-container">
               <h1 class="signin-title mb-5">Sign In</h1>
 
-              <form id="loginForm" novalidate method="post">
+              <form id="loginForm" novalidate>
                 <!-- Username -->
                 <div class="mb-4">
                   <label for="username" class="form-label fw-semibold"
@@ -100,7 +100,7 @@
                   <div class="invalid-feedback">Password wajib diisi.</div>
                 </div>
 
-                <!-- Alert error login (sembunyi default) -->
+                <!-- Alert error login -->
                 <div
                   class="alert alert-danger d-none mt-3 py-2"
                   id="loginError"
@@ -110,11 +110,6 @@
                   Username atau password salah. Silakan coba lagi.
                 </div>
 
-                <!-- Lupa Password -->
-                <div class="text-end mb-3 mt-2">
-                  <a href="#" class="forgot-link">Lupa Password?</a>
-                </div>
-
                 <!-- Tombol Login -->
                 <button type="submit" class="btn btn-login w-100">Login</button>
               </form>
@@ -122,7 +117,8 @@
           </div>
 
           <footer class="footer-text">
-            &copy; 2026 SIMASTA &mdash; Sistem Monitoring Kegiatan Pengabdian Masyarakat
+            &copy; 2026 SIMASTA &mdash; Sistem Monitoring Kegiatan Pengabdian
+            Masyarakat
           </footer>
         </div>
       </div>

@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/toast.css" />
   </head>
   <body>
     <div class="d-flex">
@@ -65,10 +66,9 @@
         <!-- TOOLBAR -->
         <div class="page-toolbar">
           <select class="filter-select" id="filterKegiatan">
-            <option value="Semua kegiatan">Semua kegiatan</option>
-            <option value="Bakti sosial desa Sukamaju">Bakti sosial desa Sukamaju</option>
-            <option value="Penyuluhan kesehatan masyarakat">Penyuluhan kesehatan masyarakat</option>
-            <option value="Pelatihan UMKM digital">Pelatihan UMKM digital</option>
+            <select class="filter-select" id="filterKegiatan">
+              <option value="Semua kegiatan"></option>
+            </select>
           </select>
 
           <select class="filter-select" id="filterTipe">
@@ -88,90 +88,12 @@
         </div>
 
         <!-- GRID DOKUMENTASI -->
-        <!-- GRID DOKUMENTASI -->
         <div class="dokumentasi-grid" style="margin-top: 24px">
-          <div class="doc-card" data-kegiatan="Bakti sosial desa Sukamaju" data-tipe="JPG" data-file="assets/dokumentasi/foto_baksos_01.jpg">
-            <div class="doc-thumb"><i class="bi bi-image"></i></div>
-            <div class="doc-filename">foto_baksos_01.jpg</div>
-            <div class="doc-meta">JPG &middot; 10 Juni 2026</div>
-            <div class="doc-actions">
-              <button class="btn-icon-plain"><i class="bi bi-eye"></i></button>
-              <button class="btn-icon-plain">
-                <i class="bi bi-download"></i>
-              </button>
-              <button
-                class="btn-icon-plain text-danger"
-                data-bs-toggle="modal"
-                data-bs-target="#modalHapusDok1"
-              >
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="doc-card" data-kegiatan="Bakti sosial desa Sukamaju" data-tipe="JPG" data-file="assets/dokumentasi/foto_baksos_02.jpg">
-            <div class="doc-thumb"><i class="bi bi-image"></i></div>
-            <div class="doc-filename">foto_baksos_02.jpg</div>
-            <div class="doc-meta">JPG &middot; 10 Juni 2026</div>
-            <div class="doc-actions">
-              <button class="btn-icon-plain"><i class="bi bi-eye"></i></button>
-              <button class="btn-icon-plain">
-                <i class="bi bi-download"></i>
-              </button>
-              <button
-                class="btn-icon-plain text-danger"
-                data-bs-toggle="modal"
-                data-bs-target="#modalHapusDok2"
-              >
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="doc-card" data-kegiatan="Penyuluhan kesehatan masyarakat" data-tipe="PNG" data-file="assets/dokumentasi/foto_penyuluhan_01.png">
-            <div class="doc-thumb"><i class="bi bi-image"></i></div>
-            <div class="doc-filename">foto_penyuluhan_01.png</div>
-            <div class="doc-meta">PNG &middot; 2 Juni 2026</div>
-            <div class="doc-actions">
-              <button class="btn-icon-plain"><i class="bi bi-eye"></i></button>
-              <button class="btn-icon-plain">
-                <i class="bi bi-download"></i>
-              </button>
-              <button
-                class="btn-icon-plain text-danger"
-                data-bs-toggle="modal"
-                data-bs-target="#modalHapusDok3"
-              >
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="doc-card" data-kegiatan="Pelatihan UMKM digital" data-tipe="PDF" data-file="assets/dokumentasi/laporan_kegiatan.pdf">
-            <div class="doc-thumb doc-thumb-pdf">
-              <i class="bi bi-filetype-pdf"></i>
-            </div>
-            <div class="doc-filename">laporan_kegiatan.pdf</div>
-            <div class="doc-meta">PDF &middot; 11 Juni 2026</div>
-            <div class="doc-actions">
-              <button class="btn-icon-plain"><i class="bi bi-eye"></i></button>
-              <button class="btn-icon-plain">
-                <i class="bi bi-download"></i>
-              </button>
-              <button
-                class="btn-icon-plain text-danger"
-                data-bs-toggle="modal"
-                data-bs-target="#modalHapusDok4"
-              >
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-          </div>
         </div>
       </main>
     </div>
 
-    <!-- ================= MODAL UPLOAD DOKUMENTASI ================= -->
+    <!--  MODAL UPLOAD DOKUMENTASI  -->
     <div class="modal fade" id="modalUploadDokumentasi" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal">
@@ -185,16 +107,19 @@
               ></button>
             </div>
             <form
-              action="proses_upload_dokumentasi.php"
+              action="php/kegiatan/proses_upload_dokumentasi.php"
               method="POST"
               enctype="multipart/form-data"
             >
               <div class="mb-3">
                 <label class="form-label-custom">Pilih kegiatan</label>
-                <select name="id_kegiatan" class="form-control-custom" required>
-                  <option value="1">Bakti sosial desa Sukamaju</option>
-                  <option value="2">Penyuluhan kesehatan masyarakat</option>
-                  <option value="3">Pelatihan UMKM digital</option>
+                <select
+                  name="id_kegiatan"
+                  class="form-control-custom"
+                  id="uploadKegiatanSelect"
+                  required
+                >
+                  <option value=""></option>
                 </select>
               </div>
               <div class="mb-4">
@@ -229,46 +154,21 @@
       </div>
     </div>
 
-    <!-- ================= MODAL HAPUS DOKUMENTASI 1,2,3,4 ================= -->
-    <div class="modal fade" id="modalHapusDok1" tabindex="-1">
+    <!-- MODAL HAPUS DOKUMENTASI UNIVERSAL -->
+    <div class="modal fade" id="modalHapusDok" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal text-center">
           <div class="modal-body py-4">
             <div class="hapus-icon-circle"><i class="bi bi-trash"></i></div>
             <h5 class="modal-title-custom mb-2">Hapus file?</h5>
-            <p class="text-muted-custom mb-4">
-              "foto_baksos_01.jpg" akan dihapus permanen.
+            <p class="text-muted-custom mb-4" id="hapusDokText">
+              "nama_file" akan dihapus permanen.
             </p>
             <div class="d-flex justify-content-center gap-2">
               <button type="button" class="btn-cancel" data-bs-dismiss="modal">
                 Batal
               </button>
-              <a
-                href="proses_hapus_dokumentasi.php?id=1"
-                class="btn-delete-confirm"
-                ><i class="bi bi-trash"></i> Ya, hapus</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalHapusDok2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal text-center">
-          <div class="modal-body py-4">
-            <div class="hapus-icon-circle"><i class="bi bi-trash"></i></div>
-            <h5 class="modal-title-custom mb-2">Hapus file?</h5>
-            <p class="text-muted-custom mb-4">
-              "foto_baksos_02.jpg" akan dihapus permanen.
-            </p>
-            <div class="d-flex justify-content-center gap-2">
-              <button type="button" class="btn-cancel" data-bs-dismiss="modal">
-                Batal
-              </button>
-              <a
-                href="proses_hapus_dokumentasi.php?id=2"
-                class="btn-delete-confirm"
+              <a href="#" id="hapusDokLink" class="btn-delete-confirm"
                 ><i class="bi bi-trash"></i> Ya, hapus</a
               >
             </div>
@@ -277,92 +177,37 @@
       </div>
     </div>
 
-    <div class="modal fade" id="modalHapusDok3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal text-center">
-          <div class="modal-body py-4">
-            <div class="hapus-icon-circle"><i class="bi bi-trash"></i></div>
-            <h5 class="modal-title-custom mb-2">Hapus file?</h5>
-            <p class="text-muted-custom mb-4">
-              "laporan_penyuluhan.jpg" akan dihapus permanen.
-            </p>
-            <div class="d-flex justify-content-center gap-2">
-              <button type="button" class="btn-cancel" data-bs-dismiss="modal">
-                Batal
-              </button>
-              <a
-                href="proses_hapus_dokumentasi.php?id=3"
-                class="btn-delete-confirm"
-                ><i class="bi bi-trash"></i> Ya, hapus</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalHapusDok4" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal text-center">
-          <div class="modal-body py-4">
-            <div class="hapus-icon-circle"><i class="bi bi-trash"></i></div>
-            <h5 class="modal-title-custom mb-2">Hapus file?</h5>
-            <p class="text-muted-custom mb-4">
-              "laporan_kegiatan.pdf" akan dihapus permanen.
-            </p>
-            <div class="d-flex justify-content-center gap-2">
-              <button type="button" class="btn-cancel" data-bs-dismiss="modal">
-                Batal
-              </button>
-              <a
-                href="proses_hapus_dokumentasi.php?id=4"
-                class="btn-delete-confirm"
-                ><i class="bi bi-trash"></i> Ya, hapus</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= MODAL PREVIEW DOKUMENTASI ================= -->
+    <!--  MODAL PREVIEW DOKUMENTASI  -->
     <div class="modal fade" id="modalPreviewDokumentasi" tabindex="-1">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content custom-modal">
-
           <div class="modal-header">
-            <h5 class="modal-title" id="previewTitle">
-              Preview Dokumentasi
-            </h5>
-
+            <h5 class="modal-title" id="previewTitle">Preview Dokumentasi</h5>
             <button
               type="button"
               class="btn-close"
-              data-bs-dismiss="modal">
-            </button>
+              data-bs-dismiss="modal"
+            ></button>
           </div>
-
           <div class="modal-body text-center">
-
             <img
               id="previewImage"
               class="img-fluid rounded d-none"
-              alt="Preview Dokumentasi">
-
+              alt="Preview Dokumentasi"
+            />
             <iframe
               id="previewPdf"
               class="w-100 d-none"
-              style="height:600px;border:none;">
+              style="height: 600px; border: none"
+            >
             </iframe>
-
           </div>
-
         </div>
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/toast.js"></script>
     <script src="js/dokumentasi.js"></script>
-
   </body>
 </html>

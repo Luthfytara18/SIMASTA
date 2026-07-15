@@ -11,9 +11,7 @@ body {
   min-height: 100vh;
 }
 
-/* ===================================
-   PANEL KIRI - HIJAU GRADIENT
-==================================== */
+/* PANEL KIRI - HIJAU GRADIENT */
 .left-panel {
   background: linear-gradient(160deg, #1f9d6b 0%, #14543b 100%);
   padding: 60px 50px;
@@ -40,9 +38,7 @@ body {
   margin: 0;
 }
 
-/* ===================================
-   PANEL KANAN - FORM
-==================================== */
+/* PANEL KANAN - FORM */
 .right-panel {
   background-color: #e7f3ee;
   padding: 40px 20px;
@@ -105,9 +101,7 @@ body {
   transition: 0.2s;
 }
 
-/* ===================================
-   TOMBOL LOGIN
-==================================== */
+/* TOMBOL LOGIN */
 .btn-login {
   background-color: #14543b;
   color: #ffffff;
@@ -128,9 +122,7 @@ body {
   transform: scale(0.99);
 }
 
-/* ===================================
-   SOCIAL LOGIN BUTTONS
-==================================== */
+/* SOCIAL LOGIN BUTTONS */
 .btn-social {
   width: 46px;
   height: 46px;
@@ -151,9 +143,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===================================
-   FOOTER
-==================================== */
+/* FOOTER */
 .footer-text {
   color: #6b7c76;
   font-size: 13px;
@@ -162,9 +152,7 @@ body {
   padding-bottom: 20px;
 }
 
-/* ===================================
-   RESPONSIVE
-==================================== */
+/* RESPONSIVE */
 @media (max-width: 991.98px) {
   .right-panel {
     min-height: 100vh;

@@ -1,6 +1,4 @@
-/* ===================================
-   PAGE TOOLBAR (search + filter + tombol tambah)
-==================================== */
+/* PAGE TOOLBAR (search + filter + tombol tambah) */
 .page-toolbar {
   display: flex;
   align-items: center;
@@ -43,9 +41,7 @@
   color: #ffffff;
 }
 
-/* ===================================
-   ACTION BUTTONS DI TABEL (edit / hapus)
-==================================== */
+/* ACTION BUTTONS DI TABEL (edit / hapus) */
 .action-btns {
   display: flex;
   gap: 6px;
@@ -90,9 +86,7 @@
   background-color: #bfdbfe;
 }
 
-/* ===================================
-   MODAL CUSTOM (tambah/edit/hapus)
-==================================== */
+/* MODAL CUSTOM (tambah/edit/hapus) */
 .custom-modal {
   border-radius: 16px;
   border: none;
@@ -204,9 +198,7 @@ textarea.form-control-custom {
   font-size: 14px;
 }
 
-/* ===================================
-   AVATAR INISIAL (untuk halaman peserta)
-==================================== */
+/* AVATAR INISIAL (untuk halaman peserta) */
 .avatar-circle {
   width: 36px;
   height: 36px;
@@ -226,9 +218,7 @@ textarea.form-control-custom {
   align-items: center;
 }
 
-/* ===================================
-   BADGE JENIS PESERTA
-==================================== */
+/* BADGE JENIS PESERTA */
 .badge-jenis {
   padding: 5px 12px;
   border-radius: 8px;
@@ -251,9 +241,7 @@ textarea.form-control-custom {
   color: #4b5563;
 }
 
-/* ===================================
-   GRID DOKUMENTASI (card foto/file)
-==================================== */
+/* GRID DOKUMENTASI (card foto/file) */
 .dokumentasi-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -318,39 +306,37 @@ textarea.form-control-custom {
 }
 
 .btn-icon-plain {
-    background: none;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    color: #374151;
-    font-size: 14px;
-    cursor: pointer;
-    width: 28px;
-    height: 28px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  color: #374151;
+  font-size: 14px;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-icon-plain:hover {
-    background-color: #f3f4f6;
-    border-color: #14543b;
-    color: #14543b;
+  background-color: #f3f4f6;
+  border-color: #14543b;
+  color: #14543b;
 }
 
 .btn-icon-plain.text-danger {
-    color: #dc2626;
-    border-color: #fecaca;
+  color: #dc2626;
+  border-color: #fecaca;
 }
 
 .btn-icon-plain.text-danger:hover {
-    background-color: #fee2e2;
-    border-color: #dc2626;
-    color: #b91c1c;
+  background-color: #fee2e2;
+  border-color: #dc2626;
+  color: #b91c1c;
 }
 
-/* ===================================
-   UPLOAD AREA (modal dokumentasi)
-==================================== */
+/* UPLOAD AREA (modal dokumentasi) */
 .upload-area {
   border: 2px dashed #d1d5db;
   border-radius: 10px;
@@ -371,9 +357,7 @@ textarea.form-control-custom {
   display: block;
 }
 
-/* ===================================
-   PAGE HEADER UNTUK KEGIATAN PESERTA
-==================================== */
+/* PAGE HEADER UNTUK KEGIATAN PESERTA */
 .peserta-count-pill {
   background-color: #dcfce7;
   color: #14543b;
@@ -383,9 +367,7 @@ textarea.form-control-custom {
   border-radius: 99px;
 }
 
-/* ===================================
-   RESPONSIVE
-==================================== */
+/* RESPONSIVE  */
 @media (max-width: 1199.98px) {
   .dokumentasi-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -26,6 +26,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/toast.css" />
   </head>
   <body>
     <div class="d-flex">
@@ -65,7 +66,7 @@
       <!-- MAIN CONTENT -->
       <main class="main-content">
         <!-- TOPBAR -->
-          <div class="topbar"></div>
+        <div class="topbar"></div>
 
         <!-- STAT CARDS -->
         <div class="stats-row">
@@ -74,7 +75,9 @@
               <i class="bi bi-calendar-event" style="color: #ef4444"></i> Total
               Kegiatan
             </div>
-            <div id="totalKegiatan" class="stat-value" style="color: #ef4444">12</div>
+            <div id="totalKegiatan" class="stat-value" style="color: #ef4444">
+              0
+            </div>
           </div>
 
           <div class="stat-card">
@@ -82,21 +85,35 @@
               <i class="bi bi-people-fill" style="color: #8b5cf6"></i> Total
               Peserta
             </div>
-            <div class="stat-value" style="color: #8b5cf6">87</div>
+            <div id="totalPeserta" class="stat-value" style="color: #8b5cf6">
+              0
+            </div>
           </div>
 
           <div class="stat-card">
             <div class="stat-label">
               <i class="bi bi-activity" style="color: #22c55e"></i> Berlangsung
             </div>
-            <div id="totalBerlangsung" class="stat-value" style="color: #22c55e">3</div>
+            <div
+              id="totalBerlangsung"
+              class="stat-value"
+              style="color: #22c55e"
+            >
+              0
+            </div>
           </div>
 
           <div class="stat-card">
             <div class="stat-label">
               <i class="bi bi-image" style="color: #3b82f6"></i> Dokumentasi
             </div>
-            <div id="totalDokumentasi" class="stat-value" style="color: #3b82f6">12</div>
+            <div
+              id="totalDokumentasi"
+              class="stat-value"
+              style="color: #3b82f6"
+            >
+              0
+            </div>
           </div>
         </div>
 
@@ -113,27 +130,6 @@
               </tr>
             </thead>
             <tbody id="kegiatanTerbaru">
-              <tr>
-                <td>Bakti sosial desa Sukamaju</td>
-                <td>10 Juni 2026</td>
-                <td>
-                  <span class="badge-status badge-berlangsung"
-                    >Berlangsung</span
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td>Penyuluhan kesehatan masyarakat</td>
-                <td>2 Juni 2026</td>
-                <td><span class="badge-status badge-selesai">Selesai</span></td>
-              </tr>
-              <tr>
-                <td>Pelatihan UMKM digital</td>
-                <td>25 Juni 2026</td>
-                <td>
-                  <span class="badge-status badge-terjadwal">Terjadwal</span>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -142,7 +138,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="js/toast.js"></script>
     <script src="js/dashboard.js"></script>
   </body>
 </html>

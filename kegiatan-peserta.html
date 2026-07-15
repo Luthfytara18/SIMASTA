@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/toast.css" />
   </head>
   <body>
     <div class="d-flex">
@@ -60,20 +61,21 @@
       <!-- MAIN CONTENT -->
       <main class="main-content">
         <!-- TOPBAR -->
-          <div class="topbar"></div>
+        <div class="topbar"></div>
 
         <!-- TOOLBAR -->
         <div class="page-toolbar">
           <div class="search-box">
             <i class="bi bi-search"></i>
-            <input type="text" id="searchKegiatanPeserta" placeholder="Cari nama peserta......" />
+            <input
+              type="text"
+              id="searchKegiatanPeserta"
+              placeholder="Cari nama peserta......"
+            />
           </div>
 
           <select class="filter-select" id="filterKegiatan">
-            <option>Semua kegiatan</option>
-            <option>Bakti sosial desa Sukamaju</option>
-            <option>Penyuluhan kesehatan</option>
-            <option>Pelatihan UMKM digital</option>
+            <option value="Semua kegiatan">Memuat kegiatan...</option>
           </select>
 
           <button
@@ -100,85 +102,14 @@
               </tr>
             </thead>
             <tbody id="kegiatanPesertaTableBody">
-              <tr>
-                <td>1</td>
-                <td>Budi Santoso</td>
-                <td>Bakti sosial desa Sukamaju</td>
-                <td>Anggota</td>
-                <td>
-                  <div class="action-btns">
-                    <button
-                      class="btn-icon btn-edit"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEditKP1"
-                    >
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button
-                      class="btn-icon btn-delete"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalHapusKP1"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Dr. Siti Rahayu</td>
-                <td>Bakti sosial desa Sukamaju</td>
-                <td>Ketua</td>
-                <td>
-                  <div class="action-btns">
-                    <button
-                      class="btn-icon btn-edit"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEditKP2"
-                    >
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button
-                      class="btn-icon btn-delete"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalHapusKP2"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Rina Wulandari</td>
-                <td>Penyuluhan kesehatan</td>
-                <td>Anggota</td>
-                <td>
-                  <div class="action-btns">
-                    <button
-                      class="btn-icon btn-edit"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEditKP3"
-                    >
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button
-                      class="btn-icon btn-delete"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalHapusKP3"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
+              <!-- Akan diisi oleh JavaScript -->
             </tbody>
           </table>
         </div>
       </main>
     </div>
 
-    <!-- ================= MODAL TAMBAH PESERTA KE KEGIATAN ================= -->
+    <!-- MODAL TAMBAH PESERTA KE KEGIATAN -->
     <div class="modal fade" id="modalTambahPesertaKegiatan" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal">
@@ -191,21 +122,31 @@
                 data-bs-dismiss="modal"
               ></button>
             </div>
-            <form action="proses_tambah_kegiatan_peserta.php" method="POST">
+            <form
+              action="php/kegiatan-peserta/proses_tambah_kegiatan_peserta.php"
+              method="POST"
+            >
+              <
               <div class="mb-3">
                 <label class="form-label-custom">Pilih kegiatan</label>
-                <select name="id_kegiatan" class="form-control-custom" required>
-                  <option value="1">Bakti sosial desa Sukamaju</option>
-                  <option value="2">Penyuluhan kesehatan masyarakat</option>
-                  <option value="3">Pelatihan UMKM digital</option>
+                <select
+                  name="id_kegiatan"
+                  class="form-control-custom"
+                  id="tambahKegiatanSelect"
+                  required
+                >
+                  <option value=""></option>
                 </select>
               </div>
               <div class="mb-3">
                 <label class="form-label-custom">Pilih peserta</label>
-                <select name="id_peserta" class="form-control-custom" required>
-                  <option value="1">Budi Santoso - 21018001</option>
-                  <option value="2">Sari Dewi - 19870012</option>
-                  <option value="3">Ahmad Fauzi - 22018045</option>
+                <select
+                  name="id_peserta"
+                  class="form-control-custom"
+                  id="tambahPesertaSelect"
+                  required
+                >
+                  <option value=""></option>
                 </select>
               </div>
               <div class="mb-4">
@@ -235,8 +176,8 @@
       </div>
     </div>
 
-    <!-- ================= MODAL EDIT KETERANGAN KP 1 ================= -->
-    <div class="modal fade" id="modalEditKP1" tabindex="-1">
+    <!-- MODAL EDIT KEGIATAN PESERTA UNIVERSAL -->
+    <div class="modal fade" id="modalEditKP" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal">
           <div class="modal-body">
@@ -248,14 +189,17 @@
                 data-bs-dismiss="modal"
               ></button>
             </div>
-            <form action="proses_edit_kegiatan_peserta.php" method="POST">
-              <input type="hidden" name="id" value="1" />
+            <form
+              action="php/kegiatan-peserta/proses_edit_kegiatan_peserta.php"
+              method="POST"
+            >
+              <input type="hidden" name="id" id="editKPId" />
               <div class="mb-3">
                 <label class="form-label-custom">Nama peserta</label>
                 <input
                   type="text"
+                  id="editKPNama"
                   class="form-control-custom"
-                  value="Budi Santoso"
                   disabled
                 />
               </div>
@@ -264,8 +208,8 @@
                 <input
                   type="text"
                   name="keterangan"
+                  id="editKPKeterangan"
                   class="form-control-custom"
-                  value="Panitia"
                 />
               </div>
               <div class="d-flex justify-content-end gap-2">
@@ -286,110 +230,8 @@
       </div>
     </div>
 
-    <!-- ================= MODAL EDIT KETERANGAN KP 2 ================= -->
-    <div class="modal fade" id="modalEditKP2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal">
-          <div class="modal-body">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <h5 class="modal-title-custom">Edit keterangan peserta</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <form action="proses_edit_kegiatan_peserta.php" method="POST">
-              <input type="hidden" name="id" value="2" />
-              <div class="mb-3">
-                <label class="form-label-custom">Nama peserta</label>
-                <input
-                  type="text"
-                  class="form-control-custom"
-                  value="Sari Dewi"
-                  disabled
-                />
-              </div>
-              <div class="mb-4">
-                <label class="form-label-custom">Keterangan</label>
-                <input
-                  type="text"
-                  name="keterangan"
-                  class="form-control-custom"
-                  value="Pembimbing"
-                />
-              </div>
-              <div class="d-flex justify-content-end gap-2">
-                <button
-                  type="button"
-                  class="btn-cancel"
-                  data-bs-dismiss="modal"
-                >
-                  Batal
-                </button>
-                <button type="submit" class="btn-save">
-                  <i class="bi bi-save"></i> Simpan
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= MODAL EDIT KETERANGAN KP 3 ================= -->
-    <div class="modal fade" id="modalEditKP3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal">
-          <div class="modal-body">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <h5 class="modal-title-custom">Edit keterangan peserta</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <form action="proses_edit_kegiatan_peserta.php" method="POST">
-              <input type="hidden" name="id" value="3" />
-              <div class="mb-3">
-                <label class="form-label-custom">Nama peserta</label>
-                <input
-                  type="text"
-                  class="form-control-custom"
-                  value="Ahmad Fauzi"
-                  disabled
-                />
-              </div>
-              <div class="mb-4">
-                <label class="form-label-custom">Keterangan</label>
-                <input
-                  type="text"
-                  name="keterangan"
-                  class="form-control-custom"
-                  value="Peserta umum"
-                />
-              </div>
-              <div class="d-flex justify-content-end gap-2">
-                <button
-                  type="button"
-                  class="btn-cancel"
-                  data-bs-dismiss="modal"
-                >
-                  Batal
-                </button>
-                <button type="submit" class="btn-save">
-                  <i class="bi bi-save"></i> Simpan
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= MODAL HAPUS KP 1,2,3 ================= -->
-    <div class="modal fade" id="modalHapusKP1" tabindex="-1">
+    <!-- MODAL HAPUS KEGIATAN PESERTA UNIVERSAL -->
+    <div class="modal fade" id="modalHapusKP" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal text-center">
           <div class="modal-body py-4">
@@ -397,68 +239,14 @@
               <i class="bi bi-person-dash"></i>
             </div>
             <h5 class="modal-title-custom mb-2">Keluarkan peserta?</h5>
-            <p class="text-muted-custom mb-4">
-              "Budi Santoso" akan dikeluarkan dari kegiatan ini.
+            <p class="text-muted-custom mb-4" id="hapusKPText">
+              "Nama peserta" akan dikeluarkan dari kegiatan ini.
             </p>
             <div class="d-flex justify-content-center gap-2">
               <button type="button" class="btn-cancel" data-bs-dismiss="modal">
                 Batal
               </button>
-              <a
-                href="proses_hapus_kegiatan_peserta.php?id=1"
-                class="btn-delete-confirm"
-                ><i class="bi bi-trash"></i> Ya, keluarkan</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalHapusKP2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal text-center">
-          <div class="modal-body py-4">
-            <div class="hapus-icon-circle">
-              <i class="bi bi-person-dash"></i>
-            </div>
-            <h5 class="modal-title-custom mb-2">Keluarkan peserta?</h5>
-            <p class="text-muted-custom mb-4">
-              "Sari Dewi" akan dikeluarkan dari kegiatan ini.
-            </p>
-            <div class="d-flex justify-content-center gap-2">
-              <button type="button" class="btn-cancel" data-bs-dismiss="modal">
-                Batal
-              </button>
-              <a
-                href="proses_hapus_kegiatan_peserta.php?id=2"
-                class="btn-delete-confirm"
-                ><i class="bi bi-trash"></i> Ya, keluarkan</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalHapusKP3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal text-center">
-          <div class="modal-body py-4">
-            <div class="hapus-icon-circle">
-              <i class="bi bi-person-dash"></i>
-            </div>
-            <h5 class="modal-title-custom mb-2">Keluarkan peserta?</h5>
-            <p class="text-muted-custom mb-4">
-              "Ahmad Fauzi" akan dikeluarkan dari kegiatan ini.
-            </p>
-            <div class="d-flex justify-content-center gap-2">
-              <button type="button" class="btn-cancel" data-bs-dismiss="modal">
-                Batal
-              </button>
-              <a
-                href="proses_hapus_kegiatan_peserta.php?id=3"
-                class="btn-delete-confirm"
+              <a href="#" id="hapusKPLink" class="btn-delete-confirm"
                 ><i class="bi bi-trash"></i> Ya, keluarkan</a
               >
             </div>
@@ -468,6 +256,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/toast.js"></script>
     <script src="js/kegiatan-peserta.js"></script>
   </body>
 </html>

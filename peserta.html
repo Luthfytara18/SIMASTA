@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/toast.css" />
   </head>
   <body>
     <div class="d-flex">
@@ -98,92 +99,13 @@
               </tr>
             </thead>
             <tbody id="pesertaTableBody">
-              <tr>
-                <td>1</td>
-                <td>Budi Santoso</td>
-                <td>21103001</td>
-                <td>
-                  <span class="badge-jenis badge-mahasiswa">Mahasiswa</span>
-                </td>
-                <td>budi@gmail.com</td>
-                <td>
-                  <div class="action-btns">
-                    <button
-                      class="btn-icon btn-edit"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEditPeserta1"
-                    >
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button
-                      class="btn-icon btn-delete"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalHapusPeserta1"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Dr. Siti Rahayu</td>
-                <td>198504102010</td>
-                <td><span class="badge-jenis badge-dosen">Dosen</span></td>
-                <td>siti@gmail.com</td>
-                <td>
-                  <div class="action-btns">
-                    <button
-                      class="btn-icon btn-edit"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEditPeserta2"
-                    >
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button
-                      class="btn-icon btn-delete"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalHapusPeserta2"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Rina Wulandari</td>
-                <td>21103045</td>
-                <td>
-                  <span class="badge-jenis badge-mahasiswa">Mahasiswa</span>
-                </td>
-                <td>rina@gmail.com</td>
-                <td>
-                  <div class="action-btns">
-                    <button
-                      class="btn-icon btn-edit"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEditPeserta3"
-                    >
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button
-                      class="btn-icon btn-delete"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalHapusPeserta3"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
       </main>
     </div>
 
-    <!-- ================= MODAL TAMBAH PESERTA ================= -->
+    <!-- MODAL TAMBAH PESERTA -->
     <div class="modal fade" id="modalTambahPeserta" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal">
@@ -196,7 +118,7 @@
                 data-bs-dismiss="modal"
               ></button>
             </div>
-            <form action="proses_tambah_peserta.php" method="POST">
+            <form action="php/peserta/proses_tambah_peserta.php" method="POST">
               <div class="mb-3">
                 <label class="form-label-custom">Nama peserta</label>
                 <input
@@ -264,8 +186,8 @@
       </div>
     </div>
 
-    <!-- ================= MODAL EDIT PESERTA 1 ================= -->
-    <div class="modal fade" id="modalEditPeserta1" tabindex="-1">
+    <!-- MODAL EDIT PESERTA UNIVERSAL -->
+    <div class="modal fade" id="modalEditPeserta" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal">
           <div class="modal-body">
@@ -277,15 +199,15 @@
                 data-bs-dismiss="modal"
               ></button>
             </div>
-            <form action="proses_edit_peserta.php" method="POST">
-              <input type="hidden" name="id_peserta" value="1" />
+            <form action="php/peserta/proses_edit_peserta.php" method="POST">
+              <input type="hidden" name="id_peserta" id="editPesertaId" />
               <div class="mb-3">
                 <label class="form-label-custom">Nama peserta</label>
                 <input
                   type="text"
                   name="nama_peserta"
+                  id="editPesertaNama"
                   class="form-control-custom"
-                  value="Budi Santoso"
                   required
                 />
               </div>
@@ -294,179 +216,19 @@
                 <input
                   type="text"
                   name="nim_nip"
+                  id="editPesertaNim"
                   class="form-control-custom"
-                  value="21103001"
                   required
                 />
               </div>
               <div class="mb-3">
                 <label class="form-label-custom">Jenis peserta</label>
-                <select name="jenis_peserta" class="form-control-custom">
-                  <option value="mahasiswa" selected>Mahasiswa</option>
-                  <option value="dosen">Dosen</option>
-                  <option value="umum">Umum</option>
-                </select>
-              </div>
-              <div class="mb-4">
-                <label class="form-label-custom">Email</label>
-                <input
-                  type="email"
-                  name="email"
+                <select
+                  name="jenis_peserta"
+                  id="editPesertaJenis"
                   class="form-control-custom"
-                  value="budi@gmail.com"
-                  required
-                />
-              </div>
-              <div class="mb-4">
-                <label class="form-label-custom">No. Telepon</label>
-                <input
-                  type="tel"
-                  name="no_telp"
-                  class="form-control-custom"
-                  value="081234567890"
-                  inputmode="numeric"
-                  maxlength="15"
-                />
-              </div>
-              <div class="d-flex justify-content-end gap-2">
-                <button
-                  type="button"
-                  class="btn-cancel"
-                  data-bs-dismiss="modal"
                 >
-                  Batal
-                </button>
-                <button type="submit" class="btn-save">
-                  <i class="bi bi-save"></i> Simpan
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= MODAL EDIT PESERTA 2 ================= -->
-    <div class="modal fade" id="modalEditPeserta2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal">
-          <div class="modal-body">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <h5 class="modal-title-custom">Edit peserta</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <form action="proses_edit_peserta.php" method="POST">
-              <input type="hidden" name="id_peserta" value="2" />
-              <div class="mb-3">
-                <label class="form-label-custom">Nama peserta</label>
-                <input
-                  type="text"
-                  name="nama_peserta"
-                  class="form-control-custom"
-                  value="Dr. Siti Rahayu"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label-custom">NIM / NIP</label>
-                <input
-                  type="text"
-                  name="nim_nip"
-                  class="form-control-custom"
-                  value="198504102010"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label-custom">Jenis peserta</label>
-                <select name="jenis_peserta" class="form-control-custom">
                   <option value="mahasiswa">Mahasiswa</option>
-                  <option value="dosen" selected>Dosen</option>
-                  <option value="umum">Umum</option>
-                </select>
-              </div>
-              <div class="mb-4">
-                <label class="form-label-custom">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  class="form-control-custom"
-                  value="siti@gmail.com"
-                  required
-                />
-              </div>
-              <div class="mb-4">
-                <label class="form-label-custom">No. Telepon</label>
-                <input
-                  type="tel"
-                  name="no_telp"
-                  class="form-control-custom"
-                  value="081323456789"
-                  inputmode="numeric"
-                  maxlength="15"
-                />
-              </div>
-              <div class="d-flex justify-content-end gap-2">
-                <button
-                  type="button"
-                  class="btn-cancel"
-                  data-bs-dismiss="modal"
-                >
-                  Batal
-                </button>
-                <button type="submit" class="btn-save">
-                  <i class="bi bi-save"></i> Simpan
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= MODAL EDIT PESERTA 3 ================= -->
-    <div class="modal fade" id="modalEditPeserta3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal">
-          <div class="modal-body">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <h5 class="modal-title-custom">Edit peserta</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <form action="proses_edit_peserta.php" method="POST">
-              <input type="hidden" name="id_peserta" value="3" />
-              <div class="mb-3">
-                <label class="form-label-custom">Nama peserta</label>
-                <input
-                  type="text"
-                  name="nama_peserta"
-                  class="form-control-custom"
-                  value="Rina Wulandari"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label-custom">NIM / NIP</label>
-                <input
-                  type="text"
-                  name="nim_nip"
-                  class="form-control-custom"
-                  value="21103045"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label-custom">Jenis peserta</label>
-                <select name="jenis_peserta" class="form-control-custom">
-                  <option value="mahasiswa" selected>Mahasiswa</option>
                   <option value="dosen">Dosen</option>
                   <option value="umum">Umum</option>
                 </select>
@@ -476,8 +238,8 @@
                 <input
                   type="email"
                   name="email"
+                  id="editPesertaEmail"
                   class="form-control-custom"
-                  value="rina@gmail.com"
                   required
                 />
               </div>
@@ -486,8 +248,8 @@
                 <input
                   type="tel"
                   name="no_telp"
+                  id="editPesertaTelp"
                   class="form-control-custom"
-                  value="081598765432"
                   inputmode="numeric"
                   maxlength="15"
                 />
@@ -510,65 +272,21 @@
       </div>
     </div>
 
-    <!-- ================= MODAL HAPUS PESERTA 1,2,3 ================= -->
-    <div class="modal fade" id="modalHapusPeserta1" tabindex="-1">
+    <!-- MODAL HAPUS PESERTA UNIVERSAL -->
+    <div class="modal fade" id="modalHapusPeserta" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal text-center">
           <div class="modal-body py-4">
             <div class="hapus-icon-circle"><i class="bi bi-trash"></i></div>
             <h5 class="modal-title-custom mb-2">Hapus peserta?</h5>
-            <p class="text-muted-custom mb-4">
-              "Budi Santoso" akan dihapus permanen.
+            <p class="text-muted-custom mb-4" id="hapusPesertaText">
+              "Nama peserta" akan dihapus permanen.
             </p>
             <div class="d-flex justify-content-center gap-2">
               <button type="button" class="btn-cancel" data-bs-dismiss="modal">
                 Batal
               </button>
-              <a href="proses_hapus_peserta.php?id=1" class="btn-delete-confirm"
-                ><i class="bi bi-trash"></i> Ya, hapus</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalHapusPeserta2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal text-center">
-          <div class="modal-body py-4">
-            <div class="hapus-icon-circle"><i class="bi bi-trash"></i></div>
-            <h5 class="modal-title-custom mb-2">Hapus peserta?</h5>
-            <p class="text-muted-custom mb-4">
-              "Dr. Siti Rahayu" akan dihapus permanen.
-            </p>
-            <div class="d-flex justify-content-center gap-2">
-              <button type="button" class="btn-cancel" data-bs-dismiss="modal">
-                Batal
-              </button>
-              <a href="proses_hapus_peserta.php?id=2" class="btn-delete-confirm"
-                ><i class="bi bi-trash"></i> Ya, hapus</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalHapusPeserta3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal text-center">
-          <div class="modal-body py-4">
-            <div class="hapus-icon-circle"><i class="bi bi-trash"></i></div>
-            <h5 class="modal-title-custom mb-2">Hapus peserta?</h5>
-            <p class="text-muted-custom mb-4">
-              "Rina Wulandari" akan dihapus permanen.
-            </p>
-            <div class="d-flex justify-content-center gap-2">
-              <button type="button" class="btn-cancel" data-bs-dismiss="modal">
-                Batal
-              </button>
-              <a href="proses_hapus_peserta.php?id=3" class="btn-delete-confirm"
+              <a href="#" id="hapusPesertaLink" class="btn-delete-confirm"
                 ><i class="bi bi-trash"></i> Ya, hapus</a
               >
             </div>
@@ -578,6 +296,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/toast.js"></script>
     <script src="js/peserta.js"></script>
   </body>
 </html>
