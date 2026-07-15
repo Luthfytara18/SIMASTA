@@ -93,9 +93,7 @@ Tabel-tabel utama:
 |kegiatan_peserta    |Relasi banyak-ke-banyak kegiatan ↔ peserta    |
 |dokumentasi         |File dokumentasi kegiatan                     |
 
-Relasi:
-kegiatan (1) ──┬── (∞) kegiatan_peserta ──┬── (1) peserta
-               └── (∞) dokumentasi
+![relasi](assets/relasi.png)
 
 ## 📸 Dokumentasi - Aturan Upload
 - Format yang diterima: JPG, JPEG, PNG, PDF
@@ -103,30 +101,8 @@ kegiatan (1) ──┬── (∞) kegiatan_peserta ──┬── (1) peserta
 - File disimpan di folder upload/ dengan penamaan unik (timestamp + random string)
 
 ## 🔄 Alur Kerja Aplikasi
-Login (index.html)
-    ↓
-Dashboard (dashboard.html)
-    ├── Lihat statistik
-    ├── Lihat 3 kegiatan terbaru
-    ├── Kelola Kegiatan (kegiatan.html)
-    │   ├── Tambah kegiatan
-    │   ├── Edit kegiatan
-    │   ├── Hapus kegiatan
-    │   └── Cari & filter
-    ├── Kelola Peserta (peserta.html)
-    │   ├── Tambah peserta
-    │   ├── Edit peserta
-    │   ├── Hapus peserta
-    │   └── Cari peserta
-    ├── Kelola Kegiatan Peserta (kegiatan-peserta.html)
-    │   ├── Daftarkan peserta ke kegiatan
-    │   ├── Edit keterangan
-    │   └── Keluarkan peserta
-    └── Dokumentasi (dokumentasi.html)
-        ├── Upload file (foto/PDF)
-        ├── Preview file
-        ├── Download file
-        └── Hapus file
+
+![alur-kerja](assets/alur-kerja.png)
 
 ## 🧪 Testing & Debugging
 - Saat login, jika gagal, server akan mengembalikan data debug yang dapat dilihat di console browser (Network → Response)
