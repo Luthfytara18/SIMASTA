@@ -9,3 +9,12 @@ vendor/
 Thumbs.db
 
 .DS_Store
+
+uploads/
+node_modules/
+.vscode/
+.idea/
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
