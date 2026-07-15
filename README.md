@@ -1,5 +1,7 @@
 # 📋 SIMASTA - Sistem Monitoring Kegiatan Pengabdian Masyarakat
 
+![logo](assets/logo.png)
+
 **Sistem Informasi Manajemen Kegiatan Pengabdian Masyarakat**
 berbasis web yang dikembangkan untuk memonitor dan mendokumentasikan kegiatan pengabdian masyarakat secara terstruktur.
 
@@ -66,12 +68,13 @@ $host = 'localhost';
 $user = 'root';        // default XAMPP
 $pass = '';            // default XAMPP
 $db = 'simasta';
+```
 
 4. Pastikan folder upload/ dapat ditulis oleh web server:
 Pada Windows/XAMPP, folder sudah memiliki izin tulis secara default
 
 5. Akses aplikasi di browser:
-"http://localhost/simasta/"
+"http://localhost/simasta/index.html"
 
 ## 🔐 Login Default
 _____________________________
@@ -86,6 +89,7 @@ Catatan: Password telah di-hash menggunakan password_hash() dengan Bcrypt.
 Tabel-tabel utama:
 _____________________________________________________________________
 |Tabel               |Deskripsi                                     |
+|--------------------|----------------------------------------------|
 |users               |Data pengguna (login)                         |
 |kegiatan            |Data kegiatan pengabdian                      |
 |peserta             |Data peserta (mahasiswa/dosen/umum)           |
@@ -141,7 +145,8 @@ Dashboard (dashboard.html)
 ## 👥 Pengembang
 Kelompok 13 – Fakultas Teknik, Program Studi Informatika, Universitas Sarjanawiyata Tamansiswa
 _________________________________________________________________________________________________
-|Nama                     |     NIM     |               Peran                                   |
+|Nama                     |     NIM     |                       Peran                           |
+|-------------------------|-------------|-------------------------------------------------------|
 |Yohanes Mario Fernandez  |  2024018003 | Front-End (HTML5, CSS, Bootstrap) & Penyusunan Laporan|
 |Luthfy Tara Nurwidagdo   |  2024018020 | JavaScript, GitHub Management & Integrasi Sistem      |
 |Atthaya Nanda            |  2022018010 | Database Design (MySQL) & Pengujian Database          |
